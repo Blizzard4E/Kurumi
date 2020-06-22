@@ -1,6 +1,6 @@
 <template>
     <section v-if="animes">
-        <div>
+        <client-only>
             <carousel :per-page="1" :autoplay="true" :paginationEnabled="false" :loop="true" :autoplayTimeout="4000">
                 <slide class="slide" v-for="anime in animes" :key="anime.id">
                     <div class="dt sd">
@@ -32,7 +32,7 @@
                     </div>
                 </slide>
             </carousel>
-        </div>
+        </client-only>
     </section>
 </template>
 
