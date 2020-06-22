@@ -1,6 +1,6 @@
 <template>
     <section>
-        <no-ssr>
+        <client-only>
             <div class="section-title">
                 <div>
                     <h1>Popular Animes</h1>
@@ -8,62 +8,76 @@
                 </div>
             </div>
             <div class="dt">
-                <carousel  :per-page="6" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="5000" :loop="true">
-                    <slide v-for="anime in animes" :key="anime.id">
-                        <div class="anime-info">
+                <carousel  :per-page="6" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="4000" :loop="true">
+                    <slide class="anime-slide" v-for="anime in animes" :key="anime.id">
+                        <nuxt-link :to="'/anime/' + anime.title" class="anime-info">
                             <div class="anime-poster">
                                 <img :src="anime.img" alt="Anime Poster">
                             </div>
                             <div>
                                 <h2 class="anime-title">{{anime.title}}</h2>
                             </div>
-                        </div>
+                        </nuxt-link>
                     </slide>
                 </carousel>
             </div>
             <div class="sd">
-                <carousel  :per-page="5" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="5000" :loop="true">
-                    <slide v-for="anime in animes" :key="anime.id">
-                        <div class="anime-info">
+                <carousel  :per-page="5" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="4000" :loop="true">
+                    <slide class="anime-slide" v-for="anime in animes" :key="anime.id">
+                        <nuxt-link :to="'/anime/' + anime.title" class="anime-info">
                             <div class="anime-poster">
                                 <img :src="anime.img" alt="Anime Poster">
                             </div>
                             <div>
                                 <h2 class="anime-title">{{anime.title}}</h2>
                             </div>
-                        </div>
+                        </nuxt-link>
                     </slide>
                 </carousel>
             </div>
             <div class="tb">
-                <carousel  :per-page="4" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="5000" :loop="true">
-                    <slide v-for="anime in animes" :key="anime.id">
-                        <div class="anime-info">
+                <carousel  :per-page="4" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="4000" :loop="true">
+                    <slide class="anime-slide" v-for="anime in animes" :key="anime.id">
+                        <nuxt-link :to="'/anime/' + anime.title" class="anime-info">
                             <div class="anime-poster">
                                 <img :src="anime.img" alt="Anime Poster">
                             </div>
                             <div>
                                 <h2 class="anime-title">{{anime.title}}</h2>
                             </div>
-                        </div>
+                        </nuxt-link>
                     </slide>
                 </carousel>
             </div>
-            <div class="pb mb">
-                <carousel  :per-page="2" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="5000" :loop="true">
-                    <slide v-for="anime in animes" :key="anime.id">
-                        <div class="anime-info">
+            <div class="pb">
+                <carousel  :per-page="3" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="4000" :loop="true">
+                    <slide class="anime-slide" v-for="anime in animes" :key="anime.id">
+                        <nuxt-link :to="'/anime/' + anime.title" class="anime-info">
                             <div class="anime-poster">
                                 <img :src="anime.img" alt="Anime Poster">
                             </div>
                             <div>
                                 <h2 class="anime-title">{{anime.title}}</h2>
                             </div>
-                        </div>
+                        </nuxt-link>
                     </slide>
                 </carousel>
             </div>
-        </no-ssr>
+            <div class="mb">
+                <carousel  :per-page="2" :paginationEnabled="false" :autoplay="true" :autoplayTimeout="4000" :loop="true">
+                    <slide class="anime-slide" v-for="anime in animes" :key="anime.id">
+                        <nuxt-link :to="'/anime/' + anime.title" class="anime-info">
+                            <div class="anime-poster">
+                                <img :src="anime.img" alt="Anime Poster">
+                            </div>
+                            <div>
+                                <h2 class="anime-title">{{anime.title}}</h2>
+                            </div>
+                        </nuxt-link>
+                    </slide>
+                </carousel>
+            </div>
+        </client-only>
     </section>
 </template>
 
@@ -96,6 +110,10 @@ export default {
     }
     section {
         margin: 1rem;
+    }
+    .anime-slide {
+        display: flex;
+        justify-content: center;
     }
     .large-line {
         width: 100%;
