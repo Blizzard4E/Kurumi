@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+html {
+    background: #23272a;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+.mb, .pb, .tb, .sd, .dt {
+    display: none;
+}
+
+/* Mobiles */
+@media only screen and (max-width: 599.98px) {
+    .container {
+        width: 100%;
+    }
+    .mb {
+        display: block;
+    }
+}
+
+/* Phablets */
+@media (min-width: 600px) and (max-width: 767.98px) {
+    .container {
+        width: 100%;
+    }
+    .pb {
+        display: block;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        width: 768px;
+    }
+    .tb {
+        display: block;
+    }
+}
+
+/* Small Desktops */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        width: 992px;
+    }
+    .sd {
+        display: block;
+    }
+}
+
+/* Desktops */
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+    .dt {
+        display: block;
+    }
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Sansation Light';
+    src: url('../fonts/Sansation_Light.ttf');
+}
+@font-face {
+    font-family: 'Sansation Regular';
+    src: url('../fonts/Sansation_Regular.ttf');
+}
+@font-face {
+    font-family: 'Sansation Bold';
+    src: url('../fonts/Sansation_Bold.ttf');
+}
