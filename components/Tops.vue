@@ -5,9 +5,7 @@
                 <slide class="slide" v-for="anime in animes" :key="anime.id">
                     <div class="dt sd">
                         <div class="playbutton-wrapper">
-                            <nuxt-link :to="'/anime/' + anime.title">
-                                <img src="../assets/SVGs/PlayButton.svg" alt="Play Button">
-                            </nuxt-link>
+                            <img src="../assets/SVGs/PlayButton.svg" alt="Play Button">
                         </div>
                     </div>
                     <div class="anime-data">
@@ -18,7 +16,7 @@
                             <div class="anime-info">
                                 <h1 class="anime-title">{{anime.title}}</h1>
                                 <div class="large-line"></div>
-                                <div class="anime-genres">
+                                <div>
                                     <ul>
                                         <span>Genre:</span>
                                         <li class="genre" v-for="genre in anime.genres" :key="genre.id">{{genre}}</li>
@@ -48,11 +46,7 @@ export default {
     methods: {
         async getAnimes() {
             axios.get('https://gogoanime.now.sh/api/v1/NewSeasons/1').then(res => {
-                for(let i=0;i<5;i++)
-                {
-                    console.log(this.animes);
-                    this.animes[i] = res.data.anime[i];
-                }
+                this.animes = res.data.anime;
                 console.log(this.animes);
             });
         }
@@ -72,16 +66,6 @@ export default {
     }
     .slide {
         display: grid;
-
-        &:hover {
-            .anime-poster {
-                box-shadow: 0 0 14px crimson;
-
-                img {
-                    transform: scale(1.1);
-                }
-            }
-        }
     }
     .playbutton-wrapper {
         display: flex;
@@ -89,6 +73,7 @@ export default {
         align-items: center;
         height: 100%;
         transition: 0.2s ease;
+        margin: 1rem;
 
         &:hover {
             transform: scale(1.1);
@@ -98,15 +83,11 @@ export default {
             width: 100%;
         }
     }
-    .anime-data {
-        padding: 1rem;
-    }
     .anime-poster {
         min-width: 215px;
         min-height: 300px;
         max-width: 215px;
         max-height: 300px;
-        box-shadow: 0 0 7px rgba(220, 20, 60, 0.8);
         overflow: hidden;
 
         img {
@@ -115,6 +96,10 @@ export default {
             object-position: center;
             object-fit: cover;
             transition: 0.2s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
     .top-layout {
@@ -122,7 +107,7 @@ export default {
     }
     .anime-info {
         width: 100%;
-        margin: 0 1rem;
+        margin-left: 1rem;
         font-family: 'Sansation Regular';
     }
     .large-line {
@@ -167,13 +152,13 @@ export default {
         margin-top: 1rem;
     }
     .anime-synopsis {
+
         font-size: 1rem;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;  
         overflow: hidden;
         text-overflow: ellipsis;
-        width: 100%;
         font-family: 'Sansation Light';
     }
     /* Mobiles */
@@ -189,6 +174,9 @@ export default {
         }
         .anime-title {
             font-size: 1.3rem;
+        }
+        .large-line {
+            width: 95%;
         }
     }
 
@@ -206,12 +194,18 @@ export default {
         .anime-title {
             font-size: 1.3rem;
         }
+        .large-line {
+            width: 95%;
+        }
     }
 
     /* Tablets */
     @media (min-width: 768px) and (max-width: 991.98px) {
         .slide {
             grid-template-columns: 1fr;
+        }
+        .large-line {
+            width: 95%;
         }
     }
 
@@ -220,12 +214,28 @@ export default {
         .slide {
             grid-template-columns: 1fr 5fr;
         }
+        .anime-poster {
+            box-shadow: 0 0 7px rgba(220, 20, 60, 0.8);
+
+            &:hover {
+                box-shadow: 0 0 14px crimson;
+            }
+        }
     }
 
     /* Desktops */
     @media only screen and (min-width: 1200px) {
         .slide {
             grid-template-columns: 1fr 5fr;
+
+            
+        }
+        .anime-poster {
+            box-shadow: 0 0 7px rgba(220, 20, 60, 0.8);
+
+            &:hover {
+                box-shadow: 0 0 14px crimson;
+            }
         }
     }
 </style>
