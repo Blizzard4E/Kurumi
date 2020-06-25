@@ -3,10 +3,10 @@
         <header>
             <div class="container">
                 <Navbar></Navbar>
-                <EpisodeInfo></EpisodeInfo>
             </div>
         </header>
         <main class="container">
+            <EpisodeInfo></EpisodeInfo>
             <VideoPlayer></VideoPlayer>
         </main>
     </section>

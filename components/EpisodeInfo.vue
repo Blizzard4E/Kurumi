@@ -14,7 +14,7 @@
                         </h1>
                     </div>
                     <div>
-                        <p>Episode <span>{{episode}}</span></p>
+                        <p>Episode <span class="episode">{{episode}}</span></p>
                     </div>
                 </div>
             </div>
@@ -104,6 +104,7 @@ export default {
     }
     h1 {
         font-size: 1.6rem;
+        font-weight: normal;
     }
     .anime-data {
         display: flex;
@@ -117,7 +118,7 @@ export default {
     p {
         font-size: 1.05rem;
     }
-    span {
+    .episode {
         color: crimson;
         text-shadow: 0 0 7px crimson;
     }
@@ -134,16 +135,14 @@ export default {
         margin: 1rem 0;
     }
     a span {
-        background: rgba(220, 20, 60, 0.6);
-        box-shadow: 0 0 7px rgba(220, 20, 60, 0.6);
+        background: #2c2f33;
         padding: 0.5rem 0.8rem;
         border-radius: 7px;
         transition: 0.4s;
         color: white;
 
         &:hover {
-            background: rgba(220, 20, 60, 1);
-            box-shadow: 0 0 7px rgba(220, 20, 60, 1);
+            background: crimson;
         }
     }
 </style>

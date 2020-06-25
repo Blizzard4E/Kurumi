@@ -147,6 +147,7 @@ export default {
         max-width: 150px;
         display: flex;
         justify-content: center;
+        font-weight: normal;
     }
     .anime-poster {
         overflow: hidden;
@@ -165,6 +166,7 @@ export default {
     }
     h1 {
         font-size: 1.75rem;
+        font-weight: normal;
     }
     .section-title {
         display: flex;

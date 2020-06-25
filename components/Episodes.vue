@@ -28,6 +28,7 @@ export default {
     h1 {
         font-size: 1.5rem;
         margin: 1rem 0;
+        font-weight: normal;
     }
     .section-grid-layout {
         display: grid;
@@ -46,6 +47,7 @@ export default {
         text-align: center;
         background: #2c2f33;
         transition: 0.7s;
+        border-radius: 7px;
 
         &:hover {
             cursor: pointer;

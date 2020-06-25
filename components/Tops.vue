@@ -4,9 +4,9 @@
             <carousel :per-page="1" :autoplay="true" :paginationEnabled="false" :loop="true" :autoplayTimeout="4000">
                 <slide class="slide" v-for="anime in animes" :key="anime.id">
                     <div class="dt sd">
-                        <div class="playbutton-wrapper">
+                        <nuxt-link :to="'/' + anime.title" class="playbutton-wrapper">
                             <img src="../assets/SVGs/PlayButton.svg" alt="Play Button">
-                        </div>
+                        </nuxt-link>
                     </div>
                     <div class="anime-data">
                         <div class="top-layout">
@@ -104,6 +104,7 @@ export default {
     }
     .top-layout {
         display: flex;
+        margin-top: 1rem;
     }
     .anime-info {
         width: 100%;
@@ -124,6 +125,7 @@ export default {
         -webkit-box-orient: vertical;  
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: normal;
     }
     ul {
         display: flex;
@@ -226,9 +228,7 @@ export default {
     /* Desktops */
     @media only screen and (min-width: 1200px) {
         .slide {
-            grid-template-columns: 1fr 5fr;
-
-            
+            grid-template-columns: 1fr 5fr;         
         }
         .anime-poster {
             box-shadow: 0 0 7px rgba(220, 20, 60, 0.8);

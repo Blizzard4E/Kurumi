@@ -36,6 +36,7 @@ export default {
     }
     span {
         color: crimson;
+        text-shadow: 0 0 7px crimson;
     }
     .nav-link {
         color: silver;
