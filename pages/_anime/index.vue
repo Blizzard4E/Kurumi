@@ -8,7 +8,7 @@
         </header>
         <main>
             <div class="container">
-                <Episodes v-bind:episodes="anime.episodes"></Episodes>
+                <Episodes v-bind:anime="anime"></Episodes>
             </div>
         </main>
     </div>

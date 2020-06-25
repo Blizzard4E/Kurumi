@@ -4,7 +4,7 @@
             <h1>Episodes :<div class="large-line"></div></h1>
         </div>
         <div class="episodes-grid-layout">
-            <nuxt-link :to="'/watch/' + episode.id" class="episode-wrapper" v-for="(episode, index) in episodes" :key="index.id">Episode {{index + 1}}</nuxt-link>
+            <nuxt-link :to="'/'+ anime.title + '/' + anime.episodes[index].id" class="episode-wrapper" v-for="(episode, index) in anime.episodes" :key="index.id">Episode {{index + 1}}</nuxt-link>
         </div>
     </section>
 </template>
@@ -12,7 +12,7 @@
 <script>
 export default {
     props: {
-        episodes: ''
+        anime: ''
     }
 }
 </script>

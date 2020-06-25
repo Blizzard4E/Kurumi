@@ -3,9 +3,10 @@
         <header>
             <div class="container">
                 <Navbar></Navbar>
+                <EpisodeInfo></EpisodeInfo>
             </div>
         </header>
-        <main>
+        <main class="container">
             <VideoPlayer></VideoPlayer>
         </main>
     </section>
@@ -13,20 +14,22 @@
 
 <script>
 import axios from 'axios'
-import Navbar from '../../components/Navbar'
-import VideoPlayer from '../../components/VideoPlayer'
+import Navbar from '../../../components/Navbar'
+import VideoPlayer from '../../../components/VideoPlayer'
+import EpisodeInfo from '../../../components/EpisodeInfo'
 
 export default {
     components: {
         Navbar,
-        VideoPlayer
+        VideoPlayer,
+        EpisodeInfo
     }
 }
 </script>
 
 <style lang="scss" scoped>
     header {
-        background: linear-gradient(rgba(220, 20, 60, 0.2), #23272a), url('../../assets/mainWallpaper.jpg');
+        background: linear-gradient(rgba(220, 20, 60, 0.2), #23272a), url('../../../assets/mainWallpaper.jpg');
         background-position: top;
         background-size: cover;
     }

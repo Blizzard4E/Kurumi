@@ -1,9 +1,7 @@
 <template>
     <section v-if="showAnime">
-        <div class="container">
-            <div class="video-wrapper">
-                <embed :src="'https://' + anime.servers[0].iframe" allowfullscreen>
-            </div>
+        <div class="video-wrapper">
+            <iframe :src="'https://' + anime.servers[0].iframe" allowfullscreen frameborder="0" scrolling="no" ref="videoRef" @load="setVideoHeight" :height="videoHeight"></iframe>
         </div>
     </section>
 </template>
@@ -15,7 +13,8 @@ export default {
     data() {
         return {
             anime: {},
-            showAnime: false
+            showAnime: false,
+            videoHeight: 0
         }
     },
     methods: {
@@ -23,8 +22,10 @@ export default {
             axios.get("https://gogoanime.now.sh/api/v1/AnimeEpisodeHandler/" + this.$route.params.watch).then(res => {
                 this.anime = res.data.anime[0];
                 this.showAnime = true;
-                console.log(this.anime);
             })
+        },
+        setVideoHeight() {  
+            this.videoHeight = this.$refs.videoRef.clientWidth*9/16;
         }
     },
     mounted() {
@@ -38,12 +39,11 @@ export default {
         margin: 1rem;
     }
     .video-wrapper {
-        display: flex;
-        justify-content: center;
+        
     }
-    embed {
-        width: 900px;
-        height: 650px;
+    iframe {
+        width: 100%;
         object-fit: fill;
     }
+
 </style>
