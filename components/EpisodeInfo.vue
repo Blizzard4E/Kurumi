@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="showAnime">
         <div class="grid-layout">
             <div class="anime-data">
                 <nuxt-link :to="'/' + title">
@@ -38,7 +38,8 @@ export default {
             episode: 0,
             prevEp: '',
             nextEp: '',
-            anime: {}
+            anime: {},
+            showAnime: false
         }
     },
     methods: {
@@ -50,12 +51,12 @@ export default {
                 episodeArray[0] = this.episode - 1;
                 this.prevEp = episodeArray.reverse().join('-');
                 }
-                console.log(this.anime.totalEpisodes);
                 if(this.episode + 1 <= this.anime.totalEpisodes) {
                     let episodeArray = this.$route.params.watch.split("-").reverse();
                     episodeArray[0] = this.episode + 1;
                     this.nextEp = episodeArray.reverse().join('-');
                 }
+                this.showAnime = true;
             })
         }
     },

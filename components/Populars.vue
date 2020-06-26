@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="showAnime">
         <client-only>
             <div class="section-title">
                 <div>
@@ -87,13 +87,15 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            animes: {}
+            animes: {},
+            showAnime: false
         }
     },
     methods: {
         async getAnimes() {
             axios.get('https://gogoanime.now.sh/api/v1/Popular/1').then(res => {
                 this.animes = res.data.popular;
+                this.showAnime = true;
             });
         }
     },

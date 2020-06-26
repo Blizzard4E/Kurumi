@@ -3,11 +3,13 @@
         <header>
             <div class="container">
                 <Navbar></Navbar>
-                <AnimeInfo v-bind:anime="anime"></AnimeInfo>
+                <div v-if="showAnime">
+                    <AnimeInfo v-bind:anime="anime"></AnimeInfo>
+                </div>
             </div>
         </header>
         <main>
-            <div class="container">
+            <div v-if="showAnime" class="container">
                 <Episodes v-bind:anime="anime"></Episodes>
             </div>
         </main>
@@ -28,14 +30,15 @@ export default {
     },
     data() {
         return {
-            anime: {}
+            anime: {},
+            showAnime: false
         }
     },
     methods: {
         getAnime() {
             axios.get('https://gogoanime.now.sh/api/v1/Search/' + this.$route.params.anime).then(res => {
                 this.anime = res.data.search[0];
-                console.log(res.data.search[0]);
+                this.showAnime = true;
             })
         }
     },
