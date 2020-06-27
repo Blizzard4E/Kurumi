@@ -56,26 +56,27 @@ export default {
     }
     form {
         all: unset;
-    }
-    input {
-        margin-left: 0.5rem;
-        padding: 0.5rem;
-        border: none;
-        border-radius: 7px;
-        background: #2c2f33;
-        outline: none;
-        transition: 0.2s ease;
-
-        &::placeholder {
-            color: rgba(192, 192, 192, 0.5);
-            font-size: 1rem;
-        }
-        &:focus {
-            background: crimson;
-            box-shadow: 0 0 14px crimson;
+        input {
+            margin-left: 0.5rem;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 7px;
+            background: #2c2f33;
+            outline: none;
+            transition: 0.2s ease;
 
             &::placeholder {
-                color: rgba(255, 255, 255, 0.8);
+                color: rgba(192, 192, 192, 0.5);
+                font-size: 1rem;
+                padding-bottom: 1rem;
+            }
+            &:focus {
+                background: crimson;
+                box-shadow: 0 0 14px crimson;
+
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.8);
+                }
             }
         }
     }
