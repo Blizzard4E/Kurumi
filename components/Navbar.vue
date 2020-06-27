@@ -68,6 +68,7 @@ export default {
 
         &::placeholder {
             color: rgba(192, 192, 192, 0.5);
+            font-size: 1rem;
         }
         &:focus {
             background: crimson;
