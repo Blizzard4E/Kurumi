@@ -18,12 +18,6 @@
                     </div>
                 </div>
             </div>
-            <div class="episode-manager">
-                <div class="episode-buttons">
-                    <nuxt-link v-if="prevEp" :to="'/' + title + '/' + prevEp"><span>Prev</span></nuxt-link>
-                    <nuxt-link v-if="nextEp" :to="'/' + title + '/' + nextEp"><span>Next</span></nuxt-link>
-                </div>
-            </div>
         </div>
     </section>
 </template>
@@ -35,9 +29,7 @@ export default {
     data() {
         return {
             title: '',
-            episode: 0,
-            prevEp: '',
-            nextEp: '',
+            episode: 0, 
             anime: {},
             showAnime: false
         }
@@ -46,16 +38,6 @@ export default {
         async getAnime() {
             axios.get('https://gogoanime.now.sh/api/v1/Search/' + this.$route.params.anime).then(res => {
                 this.anime = res.data.search[0];
-                if(this.episode > 1) {
-                let episodeArray = this.$route.params.watch.split("-").reverse();
-                episodeArray[0] = this.episode - 1;
-                this.prevEp = episodeArray.reverse().join('-');
-                }
-                if(this.episode + 1 <= this.anime.totalEpisodes) {
-                    let episodeArray = this.$route.params.watch.split("-").reverse();
-                    episodeArray[0] = this.episode + 1;
-                    this.nextEp = episodeArray.reverse().join('-');
-                }
                 this.showAnime = true;
             })
         }
@@ -78,7 +60,7 @@ export default {
     }
     .grid-layout {
         display: grid;
-        grid-template-columns: 7fr 1fr;
+        grid-template-columns: 8fr 2fr;
         column-gap: 1rem;
     }
     .anime-poster {
@@ -129,21 +111,5 @@ export default {
         box-shadow: 0 0 10px crimson;
         min-height: 0.2rem;
         margin-bottom: 0.3rem;
-    }
-    .episode-manager {
-        display: flex;
-        justify-content: flex-end;
-        margin: 1rem 0;
-    }
-    a span {
-        background: #2c2f33;
-        padding: 0.5rem 0.8rem;
-        border-radius: 7px;
-        transition: 0.4s;
-        color: white;
-
-        &:hover {
-            background: crimson;
-        }
     }
 </style>

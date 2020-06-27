@@ -39,7 +39,6 @@ export default {
     }
     .episodes-grid-layout {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
     .episode-wrapper {
         margin: 1rem;
@@ -52,6 +51,7 @@ export default {
         &:hover {
             cursor: pointer;
             background: crimson;
+            box-shadow: 0 0 14px crimson;
         }
     }
     .large-line {
@@ -61,5 +61,49 @@ export default {
         min-height: 0.2rem;
         margin-bottom: 0.2rem;
     }
-    
+    @media only screen and (max-width: 599.98px) {
+        .section-grid-layout {
+            grid-template-columns: 1fr;
+        }
+        .episodes-grid-layout {
+            grid-template-columns: 1fr;
+            column-gap: 1rem;
+            row-gap: 1rem;
+        }
+        .episode-wrapper {
+            margin: 0;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 767.98px) {
+        .section-grid-layout {
+            grid-template-columns: 1fr;
+        }
+        .episodes-grid-layout {
+            grid-template-columns: 1fr 1fr;
+            column-gap: 1rem;
+            row-gap: 1rem;
+        }
+        .episode-wrapper {
+            margin: 0;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .episodes-grid-layout {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        .episodes-grid-layout {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .episodes-grid-layout {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+    }
 </style>
