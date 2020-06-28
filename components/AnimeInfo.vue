@@ -63,8 +63,8 @@ export default {
         anime: {}
     },
     methods: {
-        getGenre(val) {
-            localStorage.setItem("genreSearch", val);
+        getGenre(_genre) {
+            localStorage.setItem("genreSearch", _genre);
             this.$router.push({ path: '/genres'});
         }
     }

@@ -1,10 +1,10 @@
 <template>
     <section>
         <div class="search-wrapper">
-            <input v-model="search" type="text" placeholder="Search...">
+            <form @submit.prevent=""><input @submit.prevent="" v-model="search" type="text" placeholder="Search..." autofocus spellcheck="false"></form>
         </div>
         <div class="results-wrapper">
-            <nuxt-link class="anime-info" :to="'/' + anime.title" v-for="anime in results" :key="anime.id">
+            <nuxt-link class="anime-info" :to="'/' + anime.animeID" v-for="anime in results" :key="anime.id">
                 <div>
                     <div class="anime-poster">
                         <img :src="anime.img" alt="Anime Poster">
@@ -25,7 +25,9 @@ export default {
     data() {
         return {
             search: '',
-            results: {}
+            results: {
+                animeID: ''
+            }
         }
     },
     methods: {
@@ -36,8 +38,15 @@ export default {
                 }
                 else {
                     this.results = res.data.search;
+                    for(let i=0;i<this.results.length;i++) {
+                        this.results[i].animeID = this.results[i].title.split(' ').join('-');
+                        this.results[i].animeID = this.results[i].animeID.replace('/', '-');
+                        this.results[i].animeID = this.results[i].animeID.replace(':', '-');
+                        this.results[i].animeID = this.results[i].animeID.replace('?', '');
+                        this.results[i].animeID = this.results[i].animeID.replace('(', '');
+                        this.results[i].animeID = this.results[i].animeID.replace(')', '');
+                    }
                 }
-                localStorage.removeItem('searchItem');
             })
         }
     },
@@ -144,6 +153,15 @@ export default {
         align-items: center;
         padding: 0.5rem;
 
+        form {
+            border-radius: 7px;
+            transition: 0.2s ease;
+            
+            &:focus-within {
+                box-shadow: 0 0 14px crimson;
+            }
+        }
+
         input {
             padding: 0.5rem 1rem;
             background: #2c2f33;
@@ -153,14 +171,16 @@ export default {
             transition: 0.5s;
             outline: none;
             color: white;
+            font-size: 1rem;
+            transition: 0.2s ease;
 
             &::placeholder {
                 color: rgba(192, 192, 192, 0.5);
+                font-size: 1rem;
             }
 
             &:focus {
                 background: crimson;
-                box-shadow: 0 0 14px crimson;
 
                 &::placeholder {
                     color: rgba(255, 255, 255, 0.8);

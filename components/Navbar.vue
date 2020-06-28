@@ -1,21 +1,14 @@
 <template>
     <nav>
-        <div>
+        <div class="section-title">
             <nuxt-link to="/" class="title">
                 <h1>Kuru<span>mi</span></h1>
             </nuxt-link>
         </div>
-        <div class="dt sd tb pb">
+        <div class="">
             <ul>
-                <nuxt-link to="/" class="nav-link">Home</nuxt-link>
-                <nuxt-link to="/genres" class="nav-link">Genre</nuxt-link>
-                <form @submit.prevent="searchFor()"><input v-model="search" v-if="!noSearch" type="text" placeholder="Search..."></form>
-            </ul>
-        </div>
-        <div class="mb">
-            <ul>
-                <nuxt-link to="/genres" class="nav-link">Genre</nuxt-link>
-                <form @submit.prevent="searchFor()"><input v-model="search" v-if="!noSearch" type="text" placeholder="Search..."></form>
+                <li><nuxt-link to="/genres" class="nav-link">Genre</nuxt-link></li>
+                <li><form @submit.prevent="searchFor()"><input v-model="search" v-if="!noSearch" type="text" placeholder="Search" spellcheck="false"></form></li>
             </ul>
         </div>
         <!-- <div class="mb">
@@ -49,34 +42,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .section-title {
+        display: flex;
+        align-items: center;
+    }
     @media only screen and (max-width: 599.98px) {
         input {
             width: 100px;
         }
     }
     form {
-        all: unset;
-        input {
-            margin-left: 0.5rem;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 7px;
-            background: #2c2f33;
-            outline: none;
-            transition: 0.2s ease;
+        border-radius: 7px;
+        transition: 0.2s ease;
+        
+        &:focus-within {
+            box-shadow: 0 0 14px crimson;
+        }
+    }
+    input {
+        border: none;
+        border-radius: 7px;
+        background: #2c2f33;
+        outline: none;
+        transition: 0.2s ease;
+        width: 100px;
+        padding: 0.5rem;
+        font-size: 1rem;
+
+        &::placeholder {
+            color: rgba(192, 192, 192, 0.5);
+            font-size: 1rem;
+        }
+        &:focus {
+            background: crimson;
 
             &::placeholder {
-                color: rgba(192, 192, 192, 0.5);
-                font-size: 1rem;
-                padding-bottom: 1rem;
-            }
-            &:focus {
-                background: crimson;
-                box-shadow: 0 0 14px crimson;
-
-                &::placeholder {
-                    color: rgba(255, 255, 255, 0.8);
-                }
+                color: rgba(255, 255, 255, 0.8);
             }
         }
     }
@@ -84,12 +85,21 @@ export default {
         color: white;
         font-family: 'Sansation Regular';
     }
-    nav {
+    li {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 1rem;
+    }
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        margin: 1rem;
+    }
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
         min-height: 5rem;
+        padding: 0 1rem;
     }
     h1 {
         font-size: 2rem;
@@ -109,7 +119,7 @@ export default {
             color: white;
         }
     }
-    /* @media only screen and (max-width: 599.98px) {
+    @media only screen and (max-width: 599.98px) {
             
     }
 
@@ -118,14 +128,20 @@ export default {
     }
 
     @media (min-width: 768px) and (max-width: 991.98px) {
-
+        input {
+            width: 150px;
+        }
     }
 
     @media (min-width: 992px) and (max-width: 1199.98px) {
-
+        input {
+            width: 150px;
+        }
     }
 
     @media only screen and (min-width: 1200px) {
-
-    }  */
+        input {
+            width: 150px;
+        }
+    }
 </style>
