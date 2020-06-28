@@ -30,7 +30,9 @@ export default {
     },
     data() {
         return {
-            anime: {},
+            anime: {
+                animeID: ''
+            },
             showAnime: false
         }
     },
@@ -38,6 +40,12 @@ export default {
         getAnime() {
             axios.get('https://gogoanime.now.sh/api/v1/Search/' + this.$route.params.anime).then(res => {
                 this.anime = res.data.search[0];
+                this.anime.animeID = this.anime.title.split(' ').join('-');
+                this.anime.animeID = this.anime.animeID.replace('/', '-');
+                this.anime.animeID = this.anime.animeID.replace(':', '-');
+                this.anime.animeID = this.anime.animeID.replace('?', '');
+                this.anime.animeID = this.anime.animeID.replace('(', '');
+                this.anime.animeID = this.anime.animeID.replace(')', '');
                 this.showAnime = true;
             })
         }
