@@ -148,7 +148,7 @@ export default {
         padding: 0.5rem;
         text-align: center;
         background: #2c2f33;
-        transition: 0.5s;
+        transition: 0.5s ease;
         border-radius: 7px;
 
         &:hover {
