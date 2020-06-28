@@ -13,7 +13,7 @@
         <div class="section-title">
             <h1>Results :<div class="large-line"></div></h1>
         </div>
-        <div class="results-wrapper">
+        <div class="results-wrapper" ref="result">
             <nuxt-link class="anime-info" :to="'/' + anime.title" v-for="anime in results" :key="anime.id">
                 <div>
                     <div class="anime-poster">
@@ -70,6 +70,7 @@ export default {
             this.results = {};
             axios.get("https://gogoanime.now.sh/api/v1/Genre/" + this.genres[this.search] + '/' + this.page).then(res => {
                 this.results = res.data.anime;
+                this.$refs.result.scrollIntoView(true);
             })
         },
         selectGenre(i) {

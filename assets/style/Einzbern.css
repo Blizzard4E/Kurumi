@@ -9,6 +9,7 @@
 }
 html {
     background: #23272a;
+    scroll-behavior: smooth;
 }
 .container {
     margin-left: auto;

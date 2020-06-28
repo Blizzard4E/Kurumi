@@ -72,7 +72,7 @@ export default {
             grid-template-columns: 1fr 1fr;
         }
         input {
-            width: 100%;
+            width: 300px;
         }
     }
 
@@ -80,11 +80,17 @@ export default {
         .results-wrapper {
             grid-template-columns: 1fr 1fr 1fr;
         }
+        input {
+            width: 500px;
+        }
     }
 
     @media (min-width: 768px) and (max-width: 991.98px) {
         .results-wrapper {
             grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        input {
+            width: 500px;
         }
     }
 
@@ -92,11 +98,17 @@ export default {
         .results-wrapper {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
+        input {
+            width: 500px;
+        }
     }
 
     @media only screen and (min-width: 1200px) {
         .results-wrapper {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+        input {
+            width: 500px;
         }
     } 
     .anime-info {
@@ -167,7 +179,6 @@ export default {
             background: #2c2f33;
             border: none;
             border-radius: 7px;
-            width: 500px;
             transition: 0.5s;
             outline: none;
             color: white;
