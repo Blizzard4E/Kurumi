@@ -14,7 +14,7 @@
             <h1>Results :<div class="large-line"></div></h1>
         </div>
         <div class="results-wrapper" ref="result">
-            <nuxt-link class="anime-info" :to="'/' + anime.title" v-for="anime in results" :key="anime.id">
+            <nuxt-link class="anime-info" :to="'/' + anime.animeID" v-for="anime in results" :key="anime.id">
                 <div>
                     <div class="anime-poster">
                         <img :src="anime.img" alt="Anime Poster">
@@ -62,7 +62,9 @@ export default {
             genres: ["action", "adventure", "cars", "comedy", "dementia", "demons", "drama", "dub", "ecchi", "fantasy", "game", "harem", "historical", "horror", "josei", "kids", "magic", "martial arts", "mecha", "military", "music", "mystery", "parody", "polic", "psychological", "romance", "school", "sci-fi", "seinen", "shoujo", "shoujo ai", "shounen", "shounen ai", "slice of life", "space", "sports", "super power", "supernatural", "thriller", "vampire", "yaoi", "yuri"],
             search: '0',
             page: 1,
-            results: {}
+            results: {
+                animeID: ''
+            }
         }
     },
     methods: {
@@ -70,6 +72,14 @@ export default {
             this.results = {};
             axios.get("https://gogoanime.now.sh/api/v1/Genre/" + this.genres[this.search] + '/' + this.page).then(res => {
                 this.results = res.data.anime;
+                for(let i=0;i<this.results.length;i++) {
+                    this.results[i].animeID = this.results[i].title.split(' ').join('-');
+                    this.results[i].animeID = this.results[i].animeID.replace('/', '-');
+                    this.results[i].animeID = this.results[i].animeID.replace(':', '-');
+                    this.results[i].animeID = this.results[i].animeID.replace('?', '');
+                    this.results[i].animeID = this.results[i].animeID.replace('(', '');
+                    this.results[i].animeID = this.results[i].animeID.replace(')', '');
+                }
                 this.$refs.result.scrollIntoView(true);
             })
         },

@@ -131,12 +131,12 @@ export default {
     .large-line {
         width: 100%;
         background: crimson;
-        box-shadow: 0 0 14px rgba(220, 20, 60, 0.8);
+        box-shadow: 0 0 10px crimson;
         min-height: 0.2rem;
         margin-bottom: 0.2rem;
     }
     .anime-info {
-        margin: 1rem;
+        margin-top: 1rem;
 
         &:hover {
             cursor: pointer;
@@ -163,12 +163,11 @@ export default {
         font-weight: normal;
     }
     .anime-poster {
-        overflow: hidden;
         width: 150px;
         height: 210px;
         box-shadow: 0 0 7px crimson;
         overflow: hidden;
-
+        
         img {
             width: 100%;
             height: 100%;
